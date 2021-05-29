@@ -1,0 +1,38 @@
+class:: SHEnvGen
+summary:: An ASR envelope generator that behaves like the envelope generator in the Moog Subharmonicon.
+categories:: UGens>Envelopes
+
+description::
+
+When a gate signal is received by the envelope generator, it will begin its
+attack phase and rises to its maximum level. The envelope generator remains in
+its attack phase even if the original gate is released or if new gates are
+received. Once it reaches its maximum level, it sustains until the gate signal
+is released. The envelope generator will then begin its release phase and fall
+to its minimum level unless a new gate signal is received.
+
+classmethods::
+
+method::kr
+
+argument::gate
+
+This triggers the envelope and holds it open while > 0. The envelope will always
+complete its entire attack phase, even if the gate signal is released before the
+attack phase completes.
+
+argument::attack
+
+The duration of the attack portion.
+
+argument::release
+
+The duration of the release portion.
+
+examples::
+
+code::
+
+{ SHEnvGen.kr(Trig.kr(1, 2)) }.scope
+
+::
